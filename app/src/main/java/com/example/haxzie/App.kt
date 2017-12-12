@@ -17,6 +17,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         ctx = applicationContext
+        //Initialize android Rooms db
         db = Room.databaseBuilder(ctx!!, DownloadDB::class.java, DATABASE_NAME).build()
         // Enabling database for resume support even after the application is killed:
 

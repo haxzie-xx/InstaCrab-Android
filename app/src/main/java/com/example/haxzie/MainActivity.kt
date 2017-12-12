@@ -27,8 +27,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.title = "InstaCrab"
 
 
+        //Set the first layout to be the download list fragment
         var downloadsFragment = DownloadList()
         supportFragmentManager.beginTransaction().replace(R.id.main_view, downloadsFragment).commit()
+
+
+
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -43,6 +47,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             drawer_layout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
+            //TODO: Update it to provide message before exit or move the app to  run in the background
         }
     }
 

@@ -11,6 +11,11 @@ import java.io.IOException
  * Created by haxzie on 11/12/17.
  */
 
+
+/**
+ * Singleton which contains most commonly used file types to make it easier to open files programmatically
+ * PS: not mine
+ */
 object FileOpen {
 
     @Throws(IOException::class)

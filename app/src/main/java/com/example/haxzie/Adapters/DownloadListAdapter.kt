@@ -40,7 +40,11 @@ import java.net.URL
         holder.bindItems(downloadList[position])
     }
 
-    public fun addDownload(downloadable: Downloadable){
+    /**
+     * Function to add new download to the list
+     * @param Downloadable object
+     */
+    fun addDownload(downloadable: Downloadable){
         downloadList.add(0,downloadable)
         this.notifyItemInserted(0)
     }
@@ -54,8 +58,11 @@ import java.net.URL
             val download_progress = itemView.findViewById<ProgressBar>(R.id.progress)
             val main_view = itemView.findViewById<CardView>(R.id.main_view)
             main_view.setOnClickListener({
+
+                //Once the downloading is completed, then make way to open the file onClick on the download list item
                 if (!downloadItem.downloading){
                     val myFile = File("/sdcard/instaCrab"+downloadItem.title.replace(" ","_")+".mp4")
+                    //use the universal fileOpen lib to open the video
                     FileOpen.openFile(ctx, myFile)
                 }
             })
@@ -64,6 +71,8 @@ import java.net.URL
             txt_file_size.text = ""
             txt_file_type.text = downloadItem.file_type
 
+            //if the download id is -1 ie file is not initialized to download
+            //Then start the download
             if (downloadItem.downloadId == -1){
                 downloadItem.downloading = true
                 var downloadURL = URL(downloadItem.url)
