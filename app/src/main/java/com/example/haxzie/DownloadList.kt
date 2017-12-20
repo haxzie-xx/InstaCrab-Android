@@ -103,8 +103,10 @@ class DownloadList : Fragment() {
                         })
                 //add the request to the volley queue and start the download
 
-                queue.add(request)
-                queue.start()
+                queue.run {
+                    add(request)
+                    start()
+                }
             }
         })
 
